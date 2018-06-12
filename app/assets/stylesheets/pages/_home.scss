@@ -1,1 +1,19 @@
-// Specific CSS for your home-page
+.headline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://picsum.photos/1000/1500/?random);
+  background-size: cover;
+  color: white;
+  padding: 20px 0px;
+
+  h2 {
+  margin-top: 5px;
+  font-style: italic;
+  }
+
+  .underline {
+    border-bottom: 2px solid white;
+  }
+}
