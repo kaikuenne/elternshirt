@@ -1,19 +1,91 @@
-.headline {
+.banner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://picsum.photos/1000/1500/?random);
+  background-image: linear-gradient(rgba(200,200,200,0.3), rgba(200,200,200,0.2)), image-url("banner.jpg");
   background-size: cover;
-  color: white;
   padding: 20px 0px;
+  color: white;
 
-  h2 {
-  margin-top: 5px;
-  font-style: italic;
+  .headline {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+      color: $main-head;
+      font-family: $logo;
+    }
+
+    h2 {
+      margin-top: 0px;
+      font-style: italic;
+      font-size: 1.8em;
+    }
+
+    .underline {
+      border-bottom: 5px solid $main-accent;
+    }
   }
 
-  .underline {
-    border-bottom: 2px solid white;
+  .usp {
+    display: flex;
+    justify-items: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 0px;
+
+    .usp-item-group {
+
+      @media screen and (min-width: 1281px) {
+        margin: 10px 0px 10px 0px;
+      }
+
+
+
+      .usp-item {
+        flex: 0 0 300px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 10px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+      }
+
+      p {
+        margin: 0px 0px 0px 0px;
+      }
+
+      i {
+        padding: 10px;
+        margin: 0px 0px 0px 0px;
+        background-color: $main-accent;
+        border-radius: 50%;
+        margin: 0px 10px 0px 10px;
+      }
+    }
   }
 }
+
+.config {
+  .cta {
+    text-align: center;
+  }
+
+  .shirt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .shirt-image {
+    margin: 0px 10px 0px 10px;
+    width: 600px;
+    height: auto;
+    content: image-url("elternshirt-white.png")
+  }
+}
+

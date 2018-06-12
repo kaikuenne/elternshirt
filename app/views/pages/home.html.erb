@@ -1,4 +1,53 @@
-<div class="headline">
-  <h1>Elternshirt</h1>
-  <h2>das Shirt <span class="underline">nur für Eltern</span></h2>
+<div class="banner">
+  <div class="headline">
+    <h1>Elternshirt</h1>
+    <h2>das Shirt <span class="underline">nur für Eltern</span></h2>
+  </div>
+  <div class="usp">
+    <div class="usp-item-group">
+      <div class="usp-item">
+        <span><i class="fas fa-child"></i></span><p>Zeig der Welt, dass Du stolz auf Dein Kind bist</p>
+      </div>
+      <div class="usp-item">
+        <span><i class="far fa-smile"></i></span><p>Bestelle jetzt Dein 100% individuelles Elternshirt</p>
+      </div>
+    </div>
+    <div class="usp-item-group">
+      <div class="usp-item">
+        <span><i class="fas fa-trophy"></i></span><p>Dein ganz besonderes Shirt, in Premiumqualität</p>
+      </div>
+      <div class="usp-item">
+        <span><i class="fas fa-gift"></i></span><p>Auch als Geschenk eine große Freude für alle Eltern!</p>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="config">
+  <div class="cta">
+    <h3>Konfiguriere jetzt dein Shirt in 30 Sekunden.</h3>
+  </div>
+  <div class="choice">
+    <%= simple_form_for @tshirt, wrapper: :inline_form, html: { class: 'form-inline' }, url: root_path(@tshirt) do |f| %>
+      <%= f.label "Ich bin" %>
+      <%= f.input :gender, collection: ['Mama', 'Papa'] %>
+      <%= f.label "Mein" %> <%= f.label "Kind heißt" %>
+      <%= f.input :child_name %>
+      <%= f.label "Geburtsdatum" %>
+      <div class='input-group date' id='datetimepicker2'>
+        <%= text_field_tag(:date, "", class: 'form-control') %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    <% end %>
+  </div>
+  <div class="shirt">
+    <div class="shirt-image">
+    </div>
+  </div>
+</div>
+
+<%= content_for :after_js do %>
+  <%= javascript_pack_tag 'datepicker' %>
+<% end %>
+
