@@ -1,7 +1,39 @@
 <div class="banner">
-  <div class="headline">
-    <h1>Elternshirt</h1>
-    <h2>das Shirt <span class="underline">nur für Eltern</span></h2>
+  <div class="config">
+    <div class="cta">
+      <h3>Konfiguriere jetzt Dein Shirt in 30 Sekunden.</h3>
+    </div>
+    <div class="choice">
+      <%= simple_form_for @tshirt, wrapper: :inline_form, html: { class: 'form-inline' }, url: root_path(@tshirt) do |f| %>
+      <div class="form-gender">
+        <%= f.label "Ich bin" %>
+        <%= f.input :gender, collection: ['Mama', 'Papa'], id: "gender-dropdown", selected: "Papa" %>
+      </div>
+      <div class="form-name">
+        <%= f.label "Mein Kind heißt" %>
+        <%= f.input :child_name, input_html: {value: "Kevin"} %>
+      </div>
+      <div class="form-birthdate">
+        <%= f.label "Geburtsdatum" %>
+        <div class='input-group date' id='datetimepicker2'>
+          <%= text_field_tag(:date, Date.today.strftime("%d/%m/%Y"), class: 'form-control') %>
+          <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+      </div>
+      <%= f.submit :"Weiter", class: "continue-btn" %>
+      <% end %>
+    </div>
+    <div class="shirt">
+      <div class="shirt-image">
+      </div>
+      <div class="shirt-text">
+        <p id="shirt-text-gender">Stolzer Papa</p>
+        <p id="shirt-text-name">von Kevin</p>
+        <p id="shirt-text-date"></p>
+      </div>
+    </div>
   </div>
   <div class="usp">
     <div class="usp-item-group">
@@ -22,31 +54,6 @@
     </div>
   </div>
 </div>
-<div class="config">
-  <div class="cta">
-    <h3>Konfiguriere jetzt dein Shirt in 30 Sekunden.</h3>
-  </div>
-  <div class="choice">
-    <%= simple_form_for @tshirt, wrapper: :inline_form, html: { class: 'form-inline' }, url: root_path(@tshirt) do |f| %>
-      <%= f.label "Ich bin" %>
-      <%= f.input :gender, collection: ['Mama', 'Papa'] %>
-      <%= f.label "Mein" %> <%= f.label "Kind heißt" %>
-      <%= f.input :child_name %>
-      <%= f.label "Geburtsdatum" %>
-      <div class='input-group date' id='datetimepicker2'>
-        <%= text_field_tag(:date, "", class: 'form-control') %>
-        <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-      </div>
-    <% end %>
-  </div>
-  <div class="shirt">
-    <div class="shirt-image">
-    </div>
-  </div>
-</div>
-
 <%= content_for :after_js do %>
   <%= javascript_pack_tag 'datepicker' %>
 <% end %>

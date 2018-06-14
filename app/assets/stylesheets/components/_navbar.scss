@@ -8,6 +8,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
 }
 
 .nav-head {
@@ -16,7 +24,21 @@
   margin: 0px;
   font-size: 2em;
   font-family: $logo;
+
+  .das-shirt {
+    margin-top: 0px;
+    font-size: 0.8em;
+    color: white;
+  }
+
+  .underline {
+    // border-bottom: 5px solid $main-accent;
+    font-style: italic;
+    font-size: 0.8em;
+    color: white;
+  }
 }
+
 
 /* Logo */
 .navbar-wagon-brand img {
