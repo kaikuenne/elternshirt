@@ -1,0 +1,24 @@
+<%= simple_form_for tshirt, url: tshirt_path(@tshirt), method: :put, html: { id: "extended_shirt_form" } do |f| %>
+<div class="form-color">
+  <%= f.label "Farbe" %>
+  <%= f.input :color, collection: ['Weiss', 'Navy', 'Schwarz'], id: "color-dropdown", selected: "Weiss", label: false %>
+</div>
+<div class="form-back">
+  <div class="ctrl-back">
+    <%= f.label "Optional: Rückenbeschriftung" %>
+    <button id="btn-back">Rücken</button>
+    <button id="btn-front" hidden="true">Vorne</button>
+  </div>
+  <%= f.input :back1, label: false, input_html: {value: "Zeile 1", onfocus: "if (this.value=='Zeile 1') this.value='';", onfocusout: "if (this.value=='') this.value='Zeile 1';" } %>
+  <%= f.input :back2, label: false, input_html: {value: "Zeile 2", onfocus: "if (this.value=='Zeile 2') this.value='';", onfocusout: "if (this.value=='') this.value='Zeile 2';" }  %>
+  <%# f.input :back3, label: false, input_html: {value: "Zeile 3", onfocus: "if (this.value=='Zeile 3') this.value='';", onfocusout: "if (this.value=='') this.value='Zeile 3';"   }  %>
+</div>
+<br>
+<div class="checkout">
+  <h4>Jetzt bestellen:</h4>
+  <div class="ctrl-checkout">
+    <!-- <span><h5>Preis: 19.95€ <br></h5><p>exkl. Versand</p></span> -->
+    <span><%= f.submit "Weiter", class: "btn-checkout" %></span>
+  </div>
+</div>
+<% end %>

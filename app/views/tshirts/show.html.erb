@@ -1,12 +1,22 @@
 <div class="banner">
   <div class="config">
     <div class="cta">
-      <h3>Konfiguriere jetzt Dein Shirt in 30 Sekunden.</h3>
+      <h3>Gib Deinem Shirt den letzten Feinschliff!</h3>
+
     </div>
-    <div class="choice">
-      <%= render '/tshirts/form', tshirt: @tshirt %>
+    <div class="choice-container">
+      <div class="tshirt-container">
+        <div class="front">
+          <%= render '/tshirts/shirt_extended', tshirt: @tshirt %>
+        </div>
+        <div class="back">
+          <%= render '/tshirts/shirt_extended_back', tshirt: @tshirt %>
+        </div>
+      </div>
+      <div class="choice">
+        <%= render '/tshirts/form_extended', tshirt: @tshirt %>
+      </div>
     </div>
-    <%= render '/tshirts/shirt', tshirt: @tshirt %>
   </div>
   <div class="usp">
     <div class="usp-item-group">
@@ -28,6 +38,5 @@
   </div>
 </div>
 <%= content_for :after_js do %>
-  <%= javascript_pack_tag 'datepicker' %>
+  <%= javascript_pack_tag 'flip' %>
 <% end %>
-

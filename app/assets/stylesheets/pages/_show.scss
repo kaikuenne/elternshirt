@@ -1,0 +1,85 @@
+.choice-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.tshirt-container {
+  flex: 0 0 auto;
+}
+
+#extended_shirt_form {
+  display: block;
+  margin-left: 40px;
+
+  .form-control {
+    width: 300px;
+  }
+
+  .ctrl-back {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 300px;
+    height: 170px;
+    background-color: $main-background;
+    color: white;
+    padding: 5px 10px 5px 10px;
+
+    -webkit-box-shadow: 0px -2px 20px -1px rgba(171,171,171,1);
+    -moz-box-shadow: 0px -2px 20px -1px rgba(171,171,171,1);
+    box-shadow: 0px -2px 20px -1px rgba(171,171,171,1);
+
+    h4 {
+      color: white;
+      font-weight: bold;
+      align-self: center
+    }
+
+    h5, p {
+      color: $main-text;
+      font-family: 'Patrick Hand SC', cursive;
+
+    }
+  }
+
+  .ctrl-checkout {
+    display: flex;
+    flex-direction: row;
+    // justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .btn-checkout {
+    height: 75px;
+    width: 150px;
+    background: $main-head;
+    align-self: flex-start;
+    color: white;
+    margin: 0px 10px 0px 10px;
+  }
+
+
+  #btn-back, #btn-front {
+    height: 39px;
+    width: 80px;
+    margin-bottom: 10px;
+    background: $main-sub;
+    align-self: flex-end;
+    color: white;
+  }
+}
+
+#shirt-extended {
+  width: inherit;
+}

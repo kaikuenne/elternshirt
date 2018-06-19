@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :tshirts, only: [:edit, :update]
+  resources :tshirts
+  get 'checkout_id=:tshirt_id', to: "checkouts#new", as: :new_checkout
+  resources :checkouts, except: [:new], path: 'checkout'
 end

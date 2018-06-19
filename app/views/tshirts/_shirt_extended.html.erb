@@ -1,0 +1,19 @@
+<div class="shirt" id="shirt-extended">
+  <div class="shirt-image shirt-white">
+  </div>
+  <div class="shirt-text">
+    <% if (@tshirt.gender).nil? %>
+      <p id="shirt-text-gender">Stolzer Papa</p>
+      <p id="shirt-text-name">von Kevin</p>
+      <p id="shirt-text-date"></p>
+    <% else %>
+      <% if @tshirt.gender == "Papa" %>
+        <p id="shirt-text-gender">Stolzer <%= @tshirt.gender %></p>
+      <% else %>
+        <p id="shirt-text-gender">Stolze <%= @tshirt.gender %></p>
+      <% end %>
+      <p id="shirt-text-name">von <%= @tshirt.child_name %></p>
+      <p id="shirt-text-date"><%= @tshirt.birth_date.strftime("%d/%m/%Y") %></p>
+    <% end %>
+  </div>
+</div>

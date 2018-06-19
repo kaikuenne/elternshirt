@@ -4,8 +4,6 @@ $(document).ready(function () {
 
     var i = 0;
 
-
-
     var consoleTyperName = $("#tshirt_child_name").keyup(function(){
             var nameText = $(this).val();
             console.log(nameText)

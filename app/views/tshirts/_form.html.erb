@@ -1,0 +1,20 @@
+<%= simple_form_for tshirt, wrapper: :inline_form, url: tshirts_path(@tshirt), method: :post, html: { class: 'form-inline'} do |f| %>
+<div class="form-gender">
+  <%= f.label "Ich bin" %>
+  <%= f.input :gender, collection: ['Mama', 'Papa'], id: "gender-dropdown", selected: "Papa" %>
+</div>
+<div class="form-name">
+  <%= f.label "Mein Kind heißt" %>
+  <%= f.input :child_name, input_html: {value: "Kevin"} %>
+</div>
+<div class="form-birthdate">
+  <%= f.label "Geburtsdatum" %>
+  <div class='input-group date' id='datetimepicker2'>
+    <%= text_field_tag(:date, Date.today.strftime("%d/%m/%Y"), class: 'form-control', name: "birth_date") %>
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+  </div>
+</div>
+<%= f.submit :"Weiter", class: "btn-continue" %>
+<% end %>

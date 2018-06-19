@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_12_214050) do
+ActiveRecord::Schema.define(version: 2018_06_17_153018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "checkouts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "tshirt_id"
+    t.bigint "price"
+    t.string "picture_front"
+    t.string "picture_back"
+    t.string "status"
+    t.index ["tshirt_id"], name: "index_checkouts_on_tshirt_id"
+    t.index ["user_id"], name: "index_checkouts_on_user_id"
+  end
 
   create_table "tshirts", force: :cascade do |t|
     t.string "gender"
@@ -22,6 +33,10 @@ ActiveRecord::Schema.define(version: 2018_06_12_214050) do
     t.date "birth_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "color"
+    t.string "back1"
+    t.string "back2"
+    t.string "back3"
     t.index ["user_id"], name: "index_tshirts_on_user_id"
   end
 
@@ -42,5 +57,7 @@ ActiveRecord::Schema.define(version: 2018_06_12_214050) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "checkouts", "tshirts"
+  add_foreign_key "checkouts", "users"
   add_foreign_key "tshirts", "users"
 end

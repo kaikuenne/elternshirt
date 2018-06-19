@@ -1,0 +1,19 @@
+function refreshForm(innerHTML) {
+  const newTshirtForm = document.getElementById('new_tshirt');
+  newTshirtForm.innerHTML = innerHTML;
+}
+
+function addTshirt() {
+  // const newTshirtForm = document.getElementById('new_tshirt');
+  const gender = document.getElementById('tshirt_gender').options[document.getElementById('tshirt_gender').selectedIndex].text;
+  const child_name = document.getElementById('tshirt_child_name').value;
+  const birth_date = document.getElementById('date').value;
+
+
+}
+
+<% if @tshirt.errors.any? %>
+  refreshForm('<%= j render "tshirts/form", tshirt: @tshirt %>');
+<% else %>
+  addTshirt();
+<% end %>
