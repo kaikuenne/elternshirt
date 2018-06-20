@@ -1,6 +1,7 @@
 class CreateCheckouts < ActiveRecord::Migration[5.2]
   def change
     create_table :checkouts do |t|
+      t.string :id_encrypted
       t.references :user, foreign_key: true, index: true
       t.references :tshirt, foreign_key: true, index: true
       t.bigint :price

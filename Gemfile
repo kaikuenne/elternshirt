@@ -4,6 +4,7 @@ ruby '2.4.4'
 gem 'bootsnap', require: false
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'devise'
+gem 'encryptor'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'

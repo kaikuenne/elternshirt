@@ -1,6 +1,6 @@
 class TshirtsController < ApplicationController
 
-  # skip_before_filter :authenticate_user!
+  skip_before_action :authenticate_user! #, only: [:new, :show, :create]
 
 
   def create
@@ -16,7 +16,7 @@ class TshirtsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { render '/' }
+        format.html { render "tshirts/new" }
         format.js  # <-- idem
       end
     end
