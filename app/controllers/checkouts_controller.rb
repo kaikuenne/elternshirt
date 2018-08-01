@@ -1,11 +1,10 @@
 class CheckoutsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :new, :show]
+  skip_before_action :authenticate_user!, only: [:index, :new, :show, :order]
 
   def index
   end
 
   def new
-
     @checkout = Checkout.new
 
     @tshirt = Tshirt.find(params[:tshirt_id])
@@ -19,7 +18,6 @@ class CheckoutsController < ApplicationController
 
     @checkout.id_encrypted = SecureRandom.urlsafe_base64
 
-
     @checkout.save
 
     puts @checkout.id
@@ -30,8 +28,23 @@ class CheckoutsController < ApplicationController
 
   def show
     @checkout = Checkout.find_by_id_encrypted(params["id_encrypted"])
-
+    @user = User.new()
+    @checkout.user = @user
   end
 
+  def order
+    @checkout = Checkout.find(params[:id])
+    @user = User.create(user_params)
+    @user.country_code = "DE"
+
+    # PostOrderJob.perform_later(@checkout.id)
+    # raise
+  end
+
+  def user_params
+    p = params.require(:checkout).permit!
+
+    @user_params = p[:user]
+  end
 
 end

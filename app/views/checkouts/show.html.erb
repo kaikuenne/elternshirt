@@ -1,0 +1,39 @@
+<%# @checkout.user.email %>
+<%= @checkout.tshirt.gender %>
+<%= @checkout.tshirt.child_name %>
+<%= @checkout.tshirt.birth_date %>
+
+<div class="container">
+  <%= simple_form_for @checkout, url: new_order_path(@checkout), method: :post do |f| %>
+
+    <%= f.simple_fields_for @user do |u| %>
+
+    <h3>Versandinformationen (notwendig)</h3>
+      <%= u.label "Name" %>
+      <%= u.input :name, required: true, label: false %>
+      <%= u.label "Email" %>
+      <%= u.input :email, required: false, label: false %>
+      <%= u.label "Straße, Hausnummer" %>
+      <%= u.input :address1, required: true, label: false %>
+      <%= u.label "Weitere Addressinformationen" %>
+      <%= u.input :address2, required: false, label: false %>
+      <%= u.label "Stadt" %>
+      <%= u.input :city, required: true, label: false %>
+      <%# u.label "Bundesland" %>
+      <%# u.input :state_code, required: true, label: false %>
+      <%# u.label "Land" %>
+      <%# u.input :country_code, required: true, label: false %>
+      <%= u.label "Postleitzahl" %>
+      <%= u.input :zip, required: true, label: false %>
+
+    <h3>Erstelle ein Nutzerkonto (optional)</h3>
+      <%= u.label "Passwort" %>
+      <%= u.input :password, required: false, hint: ("Mindestlänge: #{@minimum_password_length} Zeichen" if @minimum_password_length), label: false %>
+      <%= u.label "Passwort bestätigen" %>
+      <%= u.input :password_confirmation, required: false, label: false %>
+    <% end %>
+
+  <%= f.submit :"Weiter zur Zahlung" %>
+
+  <% end %>
+</div>
