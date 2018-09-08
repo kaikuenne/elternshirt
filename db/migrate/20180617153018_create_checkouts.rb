@@ -4,7 +4,7 @@ class CreateCheckouts < ActiveRecord::Migration[5.2]
       t.string :id_encrypted
       t.references :user, foreign_key: true, index: true
       t.references :tshirt, foreign_key: true, index: true
-      t.bigint :price
+      t.bigint :price_cents
       t.string :picture_front
       t.string :picture_back
       t.string :status

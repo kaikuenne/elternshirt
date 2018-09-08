@@ -1,0 +1,6 @@
+Payment <%= if @checkout.status = "paid"
+    "successful"
+  else
+    "failed"
+
+  end %>

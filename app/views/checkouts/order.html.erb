@@ -1,9 +1,47 @@
-<%= @user.name %>
-<%= @user.email %>
-<%= @user.address1 %>
-<%= @user.address2 %>
-<%= @user.city %>
-<%= @user.zip %>
-<%= @user.password %>
+<% @user.name %>
+<% @user.email %>
+<% @user.address1 %>
+<% @user.address2 %>
+<% @user.city %>
+<% @user.zip %>
+<% @user.password %>
 
 
+<div class="container">
+  <h1>Bestellung abschließen</h1>
+  <div class="shirt-summary">
+    <h3>Dein Elternshirt: </h3>
+    <p>Preis: <%= humanized_money_with_symbol @checkout.price %> inkl. Versandgebühren</h3>
+    <p>Größe: <%= @checkout.tshirt.size %> </p>
+  </div>
+  <div class="shipping-summary">
+    <h3>Versand an:</h3>
+    <p><%= @user.name %></p>
+    <p><%= @user.email %></p>
+    <p><%= @user.address1 %></p>
+    <p><%= @user.address2 %></p>
+    <p><%= @user.city %></p>
+    <p><%= @user.zip %></p>
+    <p><%= @user.password %></p>
+  </div>
+
+  <%= form_tag checkout_payments_path(@checkout) do %>
+
+    <% if flash[:error].present? %>
+    <div id="error_explanation">
+      <p><%= flash[:error] %></p>
+    </div>
+    <% end %>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-name="Mein Elternshirt (Tshirt Nr. <%= @checkout.tshirt.id %>)"
+      data-email="<%= @user.email %>"
+      data-description="Elternshirt <%= @checkout.tshirt.id %>"
+      data-amount="<%= @checkout.price_cents %>"
+      data-currency="<%= @checkout.price.currency %>">
+    </script>
+
+  <% end %>
+
+</div>

@@ -6,4 +6,11 @@ class User < ApplicationRecord
 
   has_many :tshirts
   has_many :checkouts
+
+
+  protected
+
+  def password_required?
+    false
+  end
 end

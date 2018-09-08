@@ -1,5 +1,7 @@
+require 'money'
+
 class CheckoutsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :new, :show, :order]
+  skip_before_action :authenticate_user!, only: [:index, :new, :show, :order, :success]
 
   def index
   end
@@ -12,9 +14,9 @@ class CheckoutsController < ApplicationController
 
     @checkout.picture_front = "Front"
     @checkout.picture_back = "Back"
-    @checkout.price = "1995"
+    @checkout.price = Money.new(1995, "EUR")
 
-    @checkout.status = "Initialized"
+    @checkout.status = "pending"
 
     @checkout.id_encrypted = SecureRandom.urlsafe_base64
 
@@ -34,12 +36,26 @@ class CheckoutsController < ApplicationController
 
   def order
     @checkout = Checkout.find(params[:id])
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     @user.country_code = "DE"
+    @user.save
+
+    @checkout.user = @user
+
+    # raise
+    @checkout.save
 
     # PostOrderJob.perform_later(@checkout.id)
-    # raise
   end
+
+  def success
+    @checkout = Checkout.find(params[:id])
+
+  end
+
+
+
+  private
 
   def user_params
     p = params.require(:checkout).permit!
