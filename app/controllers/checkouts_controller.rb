@@ -45,11 +45,12 @@ class CheckoutsController < ApplicationController
     # raise
     @checkout.save
 
-    # PostOrderJob.perform_later(@checkout.id)
   end
 
   def success
     @checkout = Checkout.find(params[:id])
+
+    # PostOrderJob.perform_later(@checkout.id)
 
   end
 

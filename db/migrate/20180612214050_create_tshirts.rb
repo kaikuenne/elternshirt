@@ -5,6 +5,7 @@ class CreateTshirts < ActiveRecord::Migration[5.2]
       t.string :child_name
       t.references :user, index: true, foreign_key: true
       t.date :birth_date
+      t.integer :printful_variant
       t.timestamps
     end
   end

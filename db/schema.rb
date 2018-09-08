@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_101457) do
+ActiveRecord::Schema.define(version: 2018_09_08_174617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,11 +28,21 @@ ActiveRecord::Schema.define(version: 2018_09_08_101457) do
     t.index ["user_id"], name: "index_checkouts_on_user_id"
   end
 
+  create_table "printfuls", force: :cascade do |t|
+    t.string "product"
+    t.string "color"
+    t.string "size"
+    t.integer "variant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "tshirts", force: :cascade do |t|
     t.string "gender"
     t.string "child_name"
     t.bigint "user_id"
     t.date "birth_date"
+    t.integer "printful_variant"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "color"

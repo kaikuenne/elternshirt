@@ -1,0 +1,2 @@
+class Printful < ApplicationRecord
+end
