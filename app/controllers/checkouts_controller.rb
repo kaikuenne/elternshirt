@@ -42,7 +42,8 @@ class CheckoutsController < ApplicationController
 
     @checkout.user = @user
 
-    # raise
+    p @user.errors.messages # debug
+
     @checkout.save
 
   end
@@ -50,7 +51,7 @@ class CheckoutsController < ApplicationController
   def success
     @checkout = Checkout.find(params[:id])
 
-    # PostOrderJob.perform_later(@checkout.id)
+    PostOrderJob.perform_later(@checkout.id)
 
   end
 
